@@ -1,0 +1,118 @@
+ pdf=pd.read_csv(r'C:\Users\Peter\Downloads\Uasin.csv')
+
+pdf
+Out[50]: 
+       Age  Female    Male  Male_Inverse  OBJECTID
+0   0 - 10  129614  131874       -131874         0
+1  10 - 20  103059  101241       -101241         1
+2  20 - 30   97189   91986        -91986         2
+3  30 - 40   53166   57642        -57642         3
+4  40 - 50   28332   31920        -31920         4
+5  50 - 60   15319   16988        -16988         5
+6  60 - 70    8634    8836         -8836         6
+7  70 - 80    4857    4616         -4616         7
+8      80+    4783    3553         -3553         8
+
+pdf['Female']
+Out[51]: 
+0    129614
+1    103059
+2     97189
+3     53166
+4     28332
+5     15319
+6      8634
+7      4857
+8      4783
+Name: Female, dtype: int64
+
+type(pdf['Female'])
+Out[52]: pandas.core.series.Series
+
+ser = pdf['Female']
+
+ser
+Out[54]: 
+0    129614
+1    103059
+2     97189
+3     53166
+4     28332
+5     15319
+6      8634
+7      4857
+8      4783
+Name: Female, dtype: int64
+
+ser
+Out[57]: 
+Nairobi        129614
+Kisumu         103059
+Mombasa         97189
+Kakamega        53166
+Kiambu          28332
+Uasin Gishu     15319
+Busia            8634
+Nambale          4857
+Butula           4783
+Name: Female, dtype: int64
+
+ser.name='Female Population Statistics'
+
+import matplotlib.pyplot as plt
+
+ser.index
+Out[60]: 
+Index(['Nairobi', 'Kisumu', 'Mombasa', 'Kakamega', 'Kiambu', 'Uasin Gishu',
+       'Busia', 'Nambale', 'Butula'],
+      dtype='object')
+
+ser.values
+Out[61]: 
+array([129614, 103059,  97189,  53166,  28332,  15319,   8634,   4857,
+         4783], dtype=int64)
+
+ser.values
+Out[63]: 
+array([129614, 103059,  97189,  53166,  28332,  15319,   8634,   4857,
+         4783], dtype=int64)
+
+len(ser.values)
+Out[64]: 9
+
+ser.index
+Out[65]: 
+Index(['Nairobi', 'Kisumu', 'Mombasa', 'Kakamega', 'Kiambu', 'Uasin Gishu',
+       'Busia', 'Nambale', 'Butula'],
+      dtype='object')
+
+y_pos = np.arange(len(ser.index))
+
+plt.barh(y_pos,ser.values,align='center',alpha=0.5)
+Out[67]: <Container object of 9 artists>
+
+plt.yticks(y_pos,ser.index)
+Out[68]: 
+([<matplotlib.axis.YTick at 0x262090480b8>,
+  <matplotlib.axis.YTick at 0x26209036390>,
+  <matplotlib.axis.YTick at 0x26209039d30>,
+  <matplotlib.axis.YTick at 0x262093dfe80>,
+  <matplotlib.axis.YTick at 0x262093f0898>,
+  <matplotlib.axis.YTick at 0x262093f72b0>,
+  <matplotlib.axis.YTick at 0x262093f7be0>,
+  <matplotlib.axis.YTick at 0x262093fd5f8>,
+  <matplotlib.axis.YTick at 0x262093fdfd0>],
+ <a list of 9 Text yticklabel objects>)
+
+plt.xlabel('Female Population in Counties')
+Out[69]: <matplotlib.text.Text at 0x2620901f860>
+
+plt.xlabel('Population')
+Out[70]: <matplotlib.text.Text at 0x2620901f860>
+
+plt.title('FEMALE POPULATION IN COUNTIES')
+Out[71]: <matplotlib.text.Text at 0x2620927e0b8>
+
+plt.show()
+
+￼
